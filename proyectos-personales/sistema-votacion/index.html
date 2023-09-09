@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <title>Sistema De Votación</title>
+    </head>
+    <body>
+        <div class="container">
+                <form action="" class="vidrio">
+                    <div> 
+                        
+                        <h1 class="title">
+                           Ejemplo De Un <span>Sistema De Votación</span> Con Solidity 
+                        </h1>
+                        <p class="description">
+                           <p> //SPDX-License-Identifier: MIT<br>
+                            pragma solidity >=0.4.4 ;<br>
+                            pragma experimental ABIEncoderV2;<br>
+                            
+                            
+                            // -----------------------------------<br>
+                            //  CANDIDATO   |   EDAD   |      ID<br>
+                            // -----------------------------------<br>
+                            //  Toni        |    20    |    12345X<br>
+                            //  Alberto     |    23    |    54321T<br>
+                            //  Joan        |    21    |    98765P<br>
+                            //  Javier      |    19    |    56789W<br><br>
+                            
+                            
+                            contract votacion{<br>
+                                
+                                //Direccion del propietario del contrato<br>
+                                address owner;<br><br>
+                                
+                                //constructor<br>
+                                constructor () public{<br>
+                                    owner = msg.sender;<br>
+                                }<br><br>
+                                
+                                //Relacion entre el nombre del candidato y el hash de sus datos personales<br>
+                                mapping (string=>bytes32) ID_Candidato;<br>
+                                
+                                //Relacion entre el nombre del candidato y el numero de votos<br>
+                                mapping (string=>uint) votos_candidato;<br>
+                                
+                                //Lista para almacenar los nombres de los candidatos<br>
+                                string [] candidatos;<br>
+                                
+                                //Lista de los hashes de la identidad de los votantes<br>
+                                bytes32 [] votantes;<br>
+                                
+                                
+                                //Cualquier persona puede usar esta funcion para presentarse a las elecciones<br>
+                                function Representar(string memory _nombrePersona, uint _edadPersona, string memory _idPersona) public{<br>
+                                    
+                                    //Hash de los datos del candidato<br>
+                                    bytes32 hash_Candidato = keccak256(abi.encodePacked(_nombrePersona, _edadPersona, _idPersona));<br>
+                                    
+                                    //Almacenamos el hash de los datos del candidato ligados a su nombre<br>
+                                    ID_Candidato[_nombrePersona] = hash_Candidato;<br>
+                                    
+                                    //Almacenamos el nombre del candidato<br>
+                                    candidatos.push(_nombrePersona);<br>
+                                    
+                                }<br><br>
+                                
+                                //Permite visualizar las personas que se han presentado como candidatos a las votaciones<br>
+                                function VerCandidatos() public view returns(string[] memory){<br>
+                                    //Devuelve la lista de los candidatos presentados<br>
+                                    return candidatos;<br>
+                                }<br><br>
+                                
+                                //Los votantes van a poder votar<br>
+                                function Votar(string memory _candidato) public{<br>
+                                    
+                                    //Hash de la direccion de la persona que ejecuta esta funcion<br>
+                                    bytes32 hash_Votante = keccak256(abi.encodePacked(msg.sender));<br>
+                                    //Verificamos si el votante ya ha votado<br>
+                                    for(uint i=0; i votantes.length; i++){<br>
+                                        require(votantes[i]!=hash_Votante, "Ya has votado previamente");<br>
+                                    }<br><br>
+                                    //Almacenamos el hash del votante dentro del array de votantes<br>
+                                    votantes.push(hash_Votante);<br>
+                                    //Añadimos un voto al candidato seleccionado<br>
+                                    votos_candidato[_candidato]++;<br>
+                                }<br><br>
+                                
+                                //Dado el nombre de un candidato nos devuelve el numero de votos que tiene<br>
+                                function VerVotos(string memory _candidato) public view returns(uint){<br>
+                                    //Devolviendo el numero de votos del candidato _candidato<br>
+                                    return votos_candidato[_candidato];<br>
+                                }<br><br>
+                                
+                                //Funcion auxiliar que transforma un uint a un string<br>
+                                function uint2str(uint _i) internal pure returns (string memory _uintAsString) {<br>
+                                    if (_i == 0) {<br>
+                                        return "0";<br>
+                                    }<br>
+                                    uint j = _i;<br>
+                                    uint len;<br>
+                                    while (j != 0) {<br>
+                                        len++;<br>
+                                        j /= 10;<br>
+                                    }<br>
+                                    bytes memory bstr = new bytes(len);<br>
+                                    uint k = len - 1;<br>
+                                    while (_i != 0) {<br>
+                                        bstr[k--] = byte(uint8(48 + _i % 10));<br>
+                                        _i /= 10;<br>
+                                    }<br>
+                                    return string(bstr);<br>
+                                }<br><br>
+                                
+                                
+                                //Ver los votos de cada uno de los candidatos<br>
+                                function VerResultados() public view returns(string memory){<br>
+                                    //Guardamos en una variable string los candidatos con sus respectivos votos<br>
+                                    string memory resultados="";<br>
+                                    
+                                    //Recorremos el array de candidatos para actualizar el string resultados<br>
+                                    for(uint i=0; icandidatos.length; i++){<br>
+                                        //Actualizamos el string resultados y añadimos el candidato que ocupa la posicion "i" del array candidatos<br>
+                                        //y su numero de votos<br>
+                                        resultados = string(abi.encodePacked(resultados, "(", candidatos[i], ", ", uint2str(VerVotos(candidatos[i])), ") -----"));
+                                    }<br><br>
+                                    
+                                    //Devolvemos los resultados<br>
+                                    return resultados;<br>
+                                }<br><br>
+                                
+                                //Proporcionar el nombre del candidato ganador<br>
+                                function Ganador() public view returns(string memory){<br>
+                                    
+                                    //La variable ganador contendra el nombre del candidato ganador <br>
+                                    string memory ganador= candidatos[0];<br>
+                                    bool flag;<br>
+                                    
+                                    //Recorremos el array de candidatos para determinar el candidato con un numero de votos mayor<br>
+                                    for(uint i=1; icandidatos.length; i++){<br>
+                                        
+                                        if(votos_candidato[ganador] < votos_candidato[candidatos[i]]){<br>
+                                            ganador = candidatos[i];<br>
+                                            flag=false;<br>
+                                        }else{<br>
+                                            if(votos_candidato[ganador] == votos_candidato[candidatos[i]]){<br>
+                                                flag=true;<br>
+                                            }<br>
+                                        }<br>
+                                    }<br><br>
+                                    
+                                    if(flag==true){<br>
+                                        ganador = "¡Hay empate entre los candidatos!";<br>
+                                        
+                                    }<br>
+                                    return ganador;<br>
+                                }
+                            }
+                        </p>
+                    </div>
+        </div>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

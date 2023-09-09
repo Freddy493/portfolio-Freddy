@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <title>Token ERC-20</title>
+    </head>
+    <body>
+        <div class="container">
+                <form action="" class="vidrio">
+                    <div>
+                        
+                        <h1 class="title">
+                           Ejemplo De Un <span>Token ERC-20</span> Con Solidity 
+                        </h1>
+                        <p class="description">
+                           <p> // SPDX-License-Identifier: MIT  </p>
+                            pragma solidity >=0.4.4 < 0.7.0;<br>
+                            pragma experimental ABIEncoderV2;<br>
+                            import "./SafeMath.sol";<br>
+                            
+                            
+                            
+                            //Juan Gabriel ---> 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4 <br>
+                            //Juan Amengual ---> 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2 <br>
+                            //María Santos ---> 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db <br>
+                            
+                            //Interface de nuestro token ERC20 <br>
+                            interface IERC20{ <br>
+                                //Devuelve la cantidad de tokens en existencia <br>
+                                function totalSupply() external view returns (uint256);<br><br>
+                            
+                                //Devuelve la cantidad de rokens para una dirección indicada por parámetro<br>
+                                function balanceOf(address account) external view returns (uint256);<br><br>
+                            
+                                //Devuelve el número de token que el spender podrá gastar en nombre del propietario (owner)<br>
+                                function allowance(address owner, address spender) external view returns (uint256);<br><br>
+                            
+                                //Devuelve un valor booleano resultado de la operación indicada<br>
+                                function transfer(address recipient, uint256 amount) external returns (bool);<br><br>
+                            
+                                //Devuelve un valor booleano con el resultado de la operación de gasto<br>
+                                function approve(address spender, uint256 amount) external returns (bool);<br><br>
+                            
+                                //Devuelve un valor booleano con el resultado de la operación de paso de una cantidad de tokens usando el método allowance()<br>
+                                function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);<br><br>
+                            
+                            
+                            
+                                //Evento que se debe emitir cuando una cantidad de tokens pase de un origen a un destino<br>
+                                event Transfer(address indexed from, address indexed to, uint256 value);<br><br>
+                            
+                                //Evento que se debe emitir cuando se establece una asignación con el mmétodo allowance()<br>
+                                event Approval(address indexed owner, address indexed spender, uint256 value);
+                            }<br><br>
+                            
+                            //Implementación de las funciones del token ERC20
+                            contract ERC20Basic is IERC20{<br>
+                            
+                                string public constant name = "ERC20BlockchainAZ";<br>
+                                string public constant symbol = "ERC";<br>
+                                uint8 public constant decimals = 18;<br>
+                            
+                                event Transfer(address indexed from, address indexed to, uint256 tokens);<br>
+                                event Approval(address indexed owner, address indexed spender, uint256 tokens);<br>
+                            
+                            
+                                using SafeMath for uint256;<br>
+                            
+                                mapping (address => uint) balances;<br>
+                                mapping (address => mapping (address => uint)) allowed;<br>
+                                uint256 totalSupply_;<br><br>
+                            
+                                constructor (uint256 initialSupply) public{<br>
+                                    totalSupply_ = initialSupply;<br>
+                                    balances[msg.sender] = totalSupply_;<br>
+                                }<br><br>
+                            
+                            
+                                function totalSupply() public override view returns (uint256){<br>
+                                    return totalSupply_;<br>
+                                }<br><br>
+                            
+                                function increaseTotalSupply(uint newTokensAmount) public {<br>
+                                    totalSupply_ += newTokensAmount;<br>
+                                    balances[msg.sender] += newTokensAmount;<br>
+                                }<br><br>
+                            
+                                function balanceOf(address tokenOwner) public override view returns (uint256){<br>
+                                    return balances[tokenOwner];<br>
+                                }<br><br>
+                            
+                                function allowance(address owner, address delegate) public override view returns (uint256){<br>
+                                    return allowed[owner][delegate];<br>
+                                }<br><br>
+                            
+                                function transfer(address recipient, uint256 numTokens) public override returns (bool){<br>
+                                    require(numTokens <= balances[msg.sender]);<br>
+                                    balances[msg.sender] = balances[msg.sender].sub(numTokens);<br>
+                                    balances[recipient] = balances[recipient].add(numTokens);<br>
+                                    emit Transfer(msg.sender, recipient, numTokens);
+                                    return true;<br>
+                                }<br><br>
+                            
+                                function approve(address delegate, uint256 numTokens) public override returns (bool){<br>
+                                    allowed[msg.sender][delegate] = numTokens;<br>
+                                    emit Approval(msg.sender, delegate, numTokens);<br>
+                                    return true;<br>
+                                }<br><br>
+                            
+                                function transferFrom(address owner, address buyer, uint256 numTokens) public override returns (bool){<br>
+                                    require(numTokens <= balances[owner]);<br>
+                                    require(numTokens <= allowed[owner][msg.sender]);<br>
+                            
+                                    balances[owner] = balances[owner].sub(numTokens);<br>
+                                    allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);<br>
+                                    balances[buyer] = balances[buyer].add(numTokens);<br>
+                                    emit Transfer(owner, buyer, numTokens);<br>
+                                    return true;<br>
+                                }<br>
+                            }<br>
+                        </p>
+                    </div>
+        </div>
+
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Portfolio</title>
+    <link rel="icon" href="img\logo.png">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- MENU ENCABEZADO -->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">FREDDY</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
+                    <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
+                    <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
+                    <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
+                    <li><a href="#portfolio" onclick="seleccionar()">PORTFOLIO</a></li>
+                    <li><a href="#contacto" onclick="seleccionar()">CONTACTO</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+
+    <!-- SECCION INICIO -->
+        <br> <br><br>
+    <section id="inicio" class="inicio">
+        <div class="contenido-banner">
+            <div class="contenedor-img">
+                <img src="img\Freddy.jpg" alt="">
+            </div>
+            <h1>FREDDY RAMIREZ</h1>
+            <h2>Desarrollador Web - Smart Contracts</h2>
+            <div class="redes">
+                <a href="https://m.facebook.com/freddy.oscar.1?eav=AfbmUJIpgWd0SOUD54Fmt2xU6GSz-p8VyM8Drax2mL9TUiiL3SVaTF1Yq1IfndXsNsg&paipv=0" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
+                <a href="https://wa.link/c6752y" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                
+                <a href="mailto:freddyoscar24go@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION SOBRE MI -->
+    <section id="sobremi" class="sobremi">
+        <div class="contenido-seccion">
+            <h2>Sobre Mí</h2>
+            <p><span>Hola, soy Freddy Ramirez.</span> Un Desarrollador Junior que recién termino su aprendizaje en el areá de Desarrollo Web Full Stack y Solidity (Creación de Smart Contracts). <br> <span>   </span> Compenso mi falta de experiencia con mis conocimientos sobre el tema, con ser una persona autodidacta, entusiasta, y creatividad.  
+                Tengo conocimientos en Desarrollo Web tanto como en el área de Front-end como en Back-end. Aunque personalmente me enfoco más en el área de Front-end, también poseo conocimientos en el área de Solidity( Creacion de Smart Contracts - Contratos Inteligentes). <br> <br>
+                <strong style="text-align: center;">Codifica siempre como si el tipo que terminará manteniendo tu código fuera un psicópata violento que supiera dónde vives</strong>
+                
+                </p>
+
+            <div class="fila">
+                <!-- datos personales -->
+                <div class="col">
+                    <h3>Datos Personales</h3>
+                    <ul>
+                        <li>
+                            <strong>Nacimiento</strong>
+                            15-06-2004
+                        </li>
+                        <li>
+                            <strong>Teléfono</strong>
+                            +580412-5074396
+                        </li>
+                        <li>
+                            <strong>Email</strong>
+                            freddyoscar24go@gmail.com
+                        </li>
+                        <li>
+                        <li>
+                            <strong>Dirección</strong>
+                            Venezuela Estado Carabobo, Valencia 
+                        </li>
+                        <li>
+                            <strong>Cargo</strong>
+                            <span>FREELANCE</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- intereses -->
+                <div class="col">
+                    <h3>Intereses</h3>
+                    <div class="contenedor-intereses">
+                        <div class="interes">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Programar</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-book"></i>
+                            <span>Estudiar</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>JUEGOS</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-headphones"></i>
+                            <span>MUSICA</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-plane"></i>
+                            <span>VIAJAR</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-person-hiking"></i>
+                            <span>DEPORTE</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-car"></i>
+                            <span>AUTOS</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION SKILLS -->
+    <section class="skills" id="skills">
+        <div class="contenido-seccion">
+            <h2>Habilidades</h2>
+            <div class="fila">
+                <!-- Technical Skill -->
+                <div class="col">
+                    <h3>Conocimientos En Tecnologia</h3>
+                    <div class="skill">
+                        <span>Javascript</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>INTERMEDIO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>HTML & CSS</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>AVANZADO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>JQUERY</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>INTERMEDIO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>PHP</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>INTERMEDIO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>MySQL</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>BASICO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Solidity</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>INTERMEDIO</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill">
+                        <span>Python</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>INTERMEDIO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Professional Skills -->
+                <div class="col">
+                    <h3>Habilidades Profesionales</h3>
+                    <div class="skill">
+                        <span>Comunicación</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>EXPERTO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Trabajo en Equipo</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>EXPERTO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Creatividad</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>EXPERTO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Dedicación</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>EXPERTO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Responsabilidad</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>EXPERTO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION CURRICULUM -->
+
+
+    <!-- SECCION PORTFOLIO -->
+    <section id="portfolio" class="portfolio">
+        <div class="contenido-seccion">
+            <h2>PORTAFOLIO PERSONAL</h2>
+           <div class="galeria">
+
+                <div class="proyecto">
+                     <a href="proyectos-personales\Landing-page\index.html" target="_blank">
+                    <img src="img/landing-page-1.png" alt="Landing Page">
+                    <div class="overlay">
+                        <h3>Landing Page</h3>
+                        <p>Proyecto 1</p>
+                    </div></a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\autos\index.html" target="_blank">
+                    <img src="img/autos.png" alt="">
+                    <div class="overlay">
+                        <h3>Pagina De Autos</h3>
+                        <p>Proyecto 2</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\pagina-muebles\index.html" target="_blank">
+                    <img src="img/woodzone.png" alt="">
+                    <div class="overlay">
+                        <h3>Paginas De Muebles Y Mas...</h3>
+                        <p>Proyecto 3</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\nft\index.html" target="_blank">
+                    <img src="img/nft.png" alt="">
+                    <div class="overlay">
+                        <h3>Pagina De NFT</h3>
+                        <p>Proyecto 4</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\paginas-viajes\index.html" target="_blank">
+                    <img src="img/viajes.png" alt="">
+                    <div class="overlay">
+                        <h3>Diseño Creativo</h3>
+                        <p>Fotografía</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\pagina-juegos\index.html" target="_blank">
+                    <img src="img/gaming.png" alt="">
+                    <div class="overlay">
+                        <h3>Pagina De Juegos</h3>
+                        <p>Proyecto 6</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\tokenERC-20\index.html" target="_blank">
+                    <img src="img/token.png" alt="">
+                    <div class="overlay">
+                        <h3>Token ERC-20</h3>
+                        <p>Proyecto 7</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\sistema-votacion\index.html" target="_blank">
+                    <img src="img/votos.png" alt="">
+                    <div class="overlay">
+                        <h3>Sistema De Votacion</h3>
+                        <p>Proyecto 8</p>
+                    </div>
+                </a>
+                </div>
+                <div class="proyecto">
+                    <a href="proyectos-personales\Evaluación-Universitarias\index.html" target="_blank">
+                    <img src="img/nota.jpg" alt="">
+                    <div class="overlay">
+                        <h3>Evaluación Universitarias</h3>
+                        <p>Proyecto 9</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION CONTACTO -->
+    <div class="Container">
+            <div id="contact" class="anon">
+          <p><i class="fa fa-minus" aria-hidden="true"></i>
+              Contactame<i class="fa fa-minus" aria-hidden="true"></i>
+      </p>
+          </div>
+      
+          <div>
+          <h1 class="ribbon">
+         <strong class="ribbon-content">Si quieres hablar conmigo, incluirme en algún proyecto, saber más sobre mí, consultarme cualquier duda, darme la oportunidad de hacer algún trabajo, no dudes en contactarte conmigo</strong>
+      </h1>
+          </div>
+          <div>
+            <h2 style="text-align: center">Justo</h2>
+          </div>
+          <div class="arrow-down"></div>
+          <div class="cnter">
+            <a href="mailto:freddyoscar24go@gmail.com" target="_blank">
+            <button class="btn btn-primary"><i class="fa fa-envelope" aria-hidden="true"></i> Enviame Un Email</button></a>
+             -- O -- 
+            <a href="https://wa.link/c6752y" target="_blank">
+            <button class="btn btn-success"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Enviame Un Whatsapp</button></a>
+          </div>
+          <br><br>
+          </div>
+    </div>
+</div>
+
+    
+    <!-- footer -->
+    <footer>
+        <a href="#inicio" class="arriba">
+            <i class="fa-solid fa-angles-up"></i>
+        </a>
+        <div class="redes">
+            <a href="https://m.facebook.com/freddy.oscar.1?eav=AfbmUJIpgWd0SOUD54Fmt2xU6GSz-p8VyM8Drax2mL9TUiiL3SVaTF1Yq1IfndXsNsg&paipv=0" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
+            <a href="https://wa.link/c6752y" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+            <a href="https://t.me/freddygome" target="_blank "><i class="fa-brands fa-telegram"></i></a>
+
+            <a href="mailto:freddyoscar24go@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
